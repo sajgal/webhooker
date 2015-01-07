@@ -1,3 +1,3 @@
 <?php
 
-echo "Github webhoook test site. 2.0";
+echo "Github webhoook test site. 3.0";
