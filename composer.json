@@ -1,0 +1,26 @@
+{
+  "name": "roarbb/webhooker",
+  "type": "library",
+  "description": "Github Webhook Helper",
+  "keywords": ["webhook", "github"],
+  "homepage": "https://github.com/roarbb/webhooker",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Matej Sajgal",
+      "email": "matej@sajgal.com",
+      "homepage": "http://www.sajgal.com"
+    }
+  ],
+  "require": {
+    "guzzlehttp/guzzle": "5.0.*@dev"
+  },
+  "require-dev": {
+    "tracy/tracy": "~2.2"
+  },
+  "autoload": {
+    "psr-4": {
+      "Webhook\\": "src"
+    }
+  }
+}
