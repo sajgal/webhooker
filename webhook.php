@@ -1,8 +1,11 @@
 <?php
 
-if ( $_POST['payload'] ) {
-    file_put_contents(__DIR__ . DIRECTORY_SEPARATOR . time() . '.txt', $_POST['payload']);
-    echo 'Posted';
+if (!empty($_POST['payload'])) {
+    $payload = json_decode($_POST['payload']);
+
+    file_put_contents(__DIR__ . DIRECTORY_SEPARATOR . time() . '.txt', $payload);
+    echo 'Posted ----- ';
+    echo $payload;
     exit;
 }
 
