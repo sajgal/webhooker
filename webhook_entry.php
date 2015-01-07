@@ -10,4 +10,4 @@ Debugger::enable(Debugger::DEVELOPMENT);
 
 $hook = new Hook();
 
-\Tracy\Debugger::dump($_SERVER);
+Debugger::dump($_SERVER);
