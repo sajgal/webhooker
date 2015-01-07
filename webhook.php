@@ -1,6 +1,6 @@
 <?php
 
-$post = file_gets_contents('php://input');
+$post = file_get_contents('php://input');
 
 if (!empty($post)) {
     $payload = json_decode($post);
