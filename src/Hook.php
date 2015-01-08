@@ -13,10 +13,10 @@ class Hook
         $this->githubSecretKey = $githubSecretKey;
     }
 
-    public function validateSignature()
+    public function isValidSignature()
     {
         if (!array_key_exists('HTTP_X_HUB_SIGNATURE', $_SERVER)) {
-            throw new Exception('Missing X-Hub-Signature header.');
+            throw new \Exception('Missing X-Hub-Signature header.');
         }
 
         return 'sha1=' . hash_hmac('sha1', $this->rawPayload, $this->githubSecretKey, false) === $_SERVER['HTTP_X_HUB_SIGNATURE'];
@@ -37,7 +37,13 @@ class Hook
         $commands[] = sprintf('cd %s', $cwd);
         $commands[] = sprintf('git pull %s %s', $repository, $branch);
 
-        return shell_exec(implode(';', $commands));
+        $commandString = implode('; ', $commands);
+
+        $output = shell_exec($commandString . " 2>&1");
+
+        if (!empty($output)) {
+            echo $output . '\n';
+        }
     }
 
     /**
@@ -70,5 +76,15 @@ class Hook
     public function setRepository($repository)
     {
         $this->repository = $repository;
+    }
+
+    public function changeOwner($user = "www-data")
+    {
+        $cwd = getcwd();
+        $output = shell_exec(sprintf("chown -R %s:%s %s 2>&1", $user, $user, $cwd));
+
+        if (!empty($output)) {
+            echo $output . '\n';
+        }
     }
 }
