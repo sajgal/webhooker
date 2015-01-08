@@ -41,9 +41,7 @@ class Hook
 
         $output = shell_exec($commandString . " 2>&1");
 
-        if (!empty($output)) {
-            echo $output . '\n';
-        }
+        echo $output;
     }
 
     /**
@@ -76,15 +74,5 @@ class Hook
     public function setRepository($repository)
     {
         $this->repository = $repository;
-    }
-
-    public function changeOwner($user = "www-data")
-    {
-        $cwd = getcwd();
-        $output = shell_exec(sprintf("chown -R %s:%s %s 2>&1", $user, $user, $cwd));
-
-        if (!empty($output)) {
-            echo $output . '\n';
-        }
     }
 }
