@@ -98,5 +98,5 @@ It may looks like this:
 
 ##Final Step
 On producion server:
-*Double-check permissions
-*Dont forget to run `composer update` 
+* Double-check permissions
+* Dont forget to run `composer update` 
