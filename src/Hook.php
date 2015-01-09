@@ -1,5 +1,7 @@
 <?php namespace Webhook;
 
+use Nette\Neon\Neon;
+
 class Hook
 {
     private $rawPayload;
@@ -7,13 +9,9 @@ class Hook
     private $branch = 'master';
     private $repository = 'origin';
 
-    /**
-     * @param null $githubSecretKey
-     */
-    public function __construct($githubSecretKey = null)
+    public function __construct()
     {
         $this->rawPayload = file_get_contents('php://input');
-        $this->githubSecretKey = $githubSecretKey;
     }
 
     /**
@@ -91,5 +89,25 @@ class Hook
     public function setRepository($repository)
     {
         $this->repository = $repository;
+    }
+
+    public function setConfigFile($configFile)
+    {
+        if(!file_exists($configFile)) {
+            throw new \Exception('Config file does not exists.');
+        }
+
+        $config = (new Neon)->decode(file_get_contents($configFile));
+
+        if(!isset($config['github']['secret']) || empty($config['github']['secret'])) {
+            throw new \Exception('Config file does not contain github secret key.');
+        }
+
+        $this->githubSecretKey = $config['github']['secret'];
+    }
+
+    public function setGithubSecret($githubSecretKey)
+    {
+        $this->githubSecretKey = $githubSecretKey;
     }
 }

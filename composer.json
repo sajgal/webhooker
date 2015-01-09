@@ -12,6 +12,9 @@
       "homepage": "http://www.sajgal.com"
     }
   ],
+  "require": {
+    "nette/neon": "2.3.*@dev"
+  },
   "autoload": {
     "psr-4": {
       "Webhook\\": "src"
