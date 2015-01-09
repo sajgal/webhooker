@@ -2,5 +2,4 @@
 vendor
 
 composer.lock
-index.php
-webhook_entry.php
+webhook.php
