@@ -87,11 +87,11 @@ Link: [https://github.com/[username]/[repository]/settings/hooks](https://github
 
 ![add-webhook](https://cloud.githubusercontent.com/assets/190549/5679146/d4d809fe-984e-11e4-822b-8ba210a48a15.png)
 
-Payload Url: Link to your webhook.php
-Content Type: application/json
-Secret: secretToken123
-Which events would you like to trigger this webhook? - Just the push event.
-Active: checked
+Payload Url: Link to your webhook.php  
+Content Type: application/json  
+Secret: secretToken123  
+Which events would you like to trigger this webhook? - Just the push event.  
+Active: checked  
 
 It may looks like this:
 ![webhook-config](https://cloud.githubusercontent.com/assets/190549/5679147/d4da61c2-984e-11e4-9be4-e6a9163b7ee1.png)
