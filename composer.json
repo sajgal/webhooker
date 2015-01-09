@@ -12,12 +12,6 @@
       "homepage": "http://www.sajgal.com"
     }
   ],
-  "require": {
-    "guzzlehttp/guzzle": "5.0.*@dev"
-  },
-  "require-dev": {
-    "tracy/tracy": "~2.2"
-  },
   "autoload": {
     "psr-4": {
       "Webhook\\": "src"

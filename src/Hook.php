@@ -7,26 +7,43 @@ class Hook
     private $branch = 'master';
     private $repository = 'origin';
 
-    public function __construct($githubSecretKey)
+    /**
+     * @param null $githubSecretKey
+     */
+    public function __construct($githubSecretKey = null)
     {
         $this->rawPayload = file_get_contents('php://input');
         $this->githubSecretKey = $githubSecretKey;
     }
 
+    /**
+     * @return bool
+     * @throws \Exception
+     */
     public function isValidSignature()
     {
         if (!array_key_exists('HTTP_X_HUB_SIGNATURE', $_SERVER)) {
             throw new \Exception('Missing X-Hub-Signature header.');
         }
 
+        if (empty($this->githubSecretKey)) {
+            throw new \Exception('Git Hub Secret Key not set.');
+        }
+
         return 'sha1=' . hash_hmac('sha1', $this->rawPayload, $this->githubSecretKey, false) === $_SERVER['HTTP_X_HUB_SIGNATURE'];
     }
 
+    /**
+     * @return mixed
+     */
     public function getPayload()
     {
         return json_decode($this->rawPayload);
     }
 
+    /**
+     * @return string
+     */
     public function pull()
     {
         $branch = $this->getBranch();
@@ -39,9 +56,9 @@ class Hook
 
         $commandString = implode('; ', $commands);
 
-        $output = shell_exec($commandString . " 2>&1");
+        $result = shell_exec($commandString . " 2>&1");
 
-        echo $output;
+        return $result;
     }
 
     /**
