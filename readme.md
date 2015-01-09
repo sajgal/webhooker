@@ -100,3 +100,9 @@ It may looks like this:
 On producion server:
 * Double-check permissions
 * Dont forget to run `composer update` 
+
+You can check your automatic updates in Webhooks/Manage Webhook -> Recent Deliveries
+![webhook-payload](https://cloud.githubusercontent.com/assets/190549/5679229/075b2838-9850-11e4-87d0-4539fb4d4315.png)
+
+
+#Enjoy your new workflow!
