@@ -14,7 +14,7 @@ Next, run the Composer command to install the latest stable version of Webhooker
 composer require roarbb/webhooker
 ```
 
-#Prerequisities
+#Prerequisites
 
 Make sure that you have rights to update files on server
 ```bash
